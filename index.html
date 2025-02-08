@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jewellery Store</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f8f8;
+        }
+        header, footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background: url('jewellery-bg.jpg') no-repeat center;
+            background-size: cover;
+            color: white;
+            animation: fadeIn 2s;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0;
+            animation: slideIn 2s;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        .hero button {
+            padding: 10px 20px;
+            border: none;
+            background: gold;
+            color: black;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* Categories */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .category {
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .category:hover {
+            transform: scale(1.1);
+        }
+
+        /* Featured Products */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .product {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            text-align: center;
+            padding: 30px;
+        }
+        .testimonial {
+            font-style: italic;
+            margin: 10px 0;
+        }
+
+        /* Footer */
+        .footer input {
+            padding: 5px;
+            margin-top: 10px;
+        }
+        .footer button {
+            padding: 5px 10px;
+            background: gold;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {opacity: 0;} to {opacity: 1;}
+        }
+        @keyframes slideIn {
+            from {transform: translateY(-50px);} to {transform: translateY(0);}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Jewellery Store</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Categories</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Elegant & Timeless Jewellery</h1>
+        <p>Discover handcrafted designs perfect for every occasion.</p>
+        <button>Contact Us</button>
+    </section>
+
+    <section class="categories">
+        <div class="category">Rings</div>
+        <div class="category">Necklaces</div>
+        <div class="category">Bracelets</div>
+    </section>
+
+    <section class="products">
+        <div class="product">Diamond Ring</div>
+        <div class="product">Gold Necklace</div>
+        <div class="product">Silver Bracelet</div>
+    </section>
+
+    <section class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <p class="testimonial">"Absolutely stunning craftsmanship!"</p>
+        <p class="testimonial">"A perfect gift for my loved one."</p>
+    </section>
+
+    <footer class="footer">
+        <p>Follow us on Social Media</p>
+        <input type="email" placeholder="Enter your email">
+        <button>Subscribe</button>
+    </footer>
+</body>
+</html>
