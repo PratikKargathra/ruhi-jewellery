@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jewellery Store</title>
+    <title>Ruhi Jewellery</title>
     <style>
         /* Global Styles */
         body {
             font-family: 'Playfair Display', serif;
             margin: 0;
             padding: 0;
-            background: #fdfdfd;
-            color: #333;
+            background: #0d0d0d;
+            color: #fff;
         }
         header, footer {
             background: #222;
@@ -38,34 +38,50 @@
         .hero {
             text-align: center;
             padding: 100px 20px;
-            background: url('jewellery-bg.jpg') no-repeat center;
-            background-size: cover;
-            color: white;
-            animation: fadeIn 2s;
+            background: radial-gradient(circle, rgba(255,215,0,0.3) 20%, rgba(0,0,0,1) 80%);
             position: relative;
         }
         .hero h1 {
             font-size: 4rem;
             margin: 0;
-            animation: slideIn 2s;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            animation: glowText 2s infinite alternate;
+        }
+        @keyframes glowText {
+            from { text-shadow: 0 0 10px gold, 0 0 20px gold; }
+            to { text-shadow: 0 0 20px gold, 0 0 40px gold; }
         }
         .hero p {
             font-size: 1.5rem;
             margin: 10px 0;
         }
-        .hero button {
+
+        /* Contact Us Section */
+        .contact-section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 50px;
+            background: #1a1a1a;
+        }
+        .contact-text {
+            max-width: 500px;
+        }
+        .contact-text button {
             padding: 12px 25px;
-            border: none;
             background: gold;
             color: black;
-            font-size: 1.2rem;
+            border: none;
             cursor: pointer;
-            border-radius: 30px;
-            transition: background 0.3s;
+            transition: transform 0.3s;
         }
-        .hero button:hover {
-            background: darkgoldenrod;
+        .contact-text button:hover {
+            transform: scale(1.1);
+        }
+        .contact-images img {
+            width: 200px;
+            height: auto;
+            margin: 10px;
+            border-radius: 10px;
         }
 
         /* Categories */
@@ -76,16 +92,15 @@
             padding: 50px;
         }
         .category {
-            padding: 20px;
             background: white;
+            padding: 20px;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s;
         }
         .category:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         /* Featured Products */
@@ -95,13 +110,9 @@
             gap: 30px;
             padding: 50px;
         }
-        .product {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+        .product img {
+            width: 100%;
+            border-radius: 10px;
         }
         .product:hover {
             transform: translateY(-10px);
@@ -112,43 +123,42 @@
             text-align: center;
             padding: 50px;
             background: #f5f5f5;
+            color: #000;
         }
         .testimonial {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
             font-style: italic;
-            margin: 10px 0;
-            font-size: 1.2rem;
+        }
+        .testimonial img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
         }
 
         /* Footer */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
         .footer input {
             padding: 10px;
-            margin-top: 10px;
-            border-radius: 20px;
-            border: 1px solid #ccc;
+            border-radius: 5px;
         }
         .footer button {
-            padding: 10px 20px;
+            padding: 10px;
             background: gold;
             border: none;
             cursor: pointer;
-            border-radius: 20px;
-        }
-        .footer button:hover {
-            background: darkgoldenrod;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {opacity: 0;} to {opacity: 1;}
-        }
-        @keyframes slideIn {
-            from {transform: translateY(-50px);} to {transform: translateY(0);}
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Jewellery Store</h1>
+        <h1>Ruhi Jewellery</h1>
         <nav>
             <a href="#">Home</a>
             <a href="#">Categories</a>
@@ -157,9 +167,19 @@
     </header>
 
     <section class="hero">
-        <h1>Elegant & Timeless Jewellery</h1>
-        <p>Discover handcrafted designs perfect for every occasion.</p>
-        <button>Contact Us</button>
+        <h1>Ruhi Jewellery</h1>
+    </section>
+
+    <section class="contact-section">
+        <div class="contact-text">
+            <h2>Elegant & Timeless Jewellery</h2>
+            <p>Discover handcrafted designs perfect for every occasion.</p>
+            <button>Enquire Now</button>
+        </div>
+        <div class="contact-images">
+            <img src="https://via.placeholder.com/200" alt="Jewellery Sample">
+            <img src="https://via.placeholder.com/200" alt="Jewellery Sample">
+        </div>
     </section>
 
     <section class="categories">
@@ -169,15 +189,21 @@
     </section>
 
     <section class="products">
-        <div class="product">Diamond Ring</div>
-        <div class="product">Gold Necklace</div>
-        <div class="product">Silver Bracelet</div>
+        <div class="product"><img src="https://via.placeholder.com/150" alt="Product">Diamond Ring</div>
+        <div class="product"><img src="https://via.placeholder.com/150" alt="Product">Gold Necklace</div>
+        <div class="product"><img src="https://via.placeholder.com/150" alt="Product">Silver Bracelet</div>
     </section>
 
     <section class="testimonials">
         <h2>What Our Customers Say</h2>
-        <p class="testimonial">"Absolutely stunning craftsmanship!"</p>
-        <p class="testimonial">"A perfect gift for my loved one."</p>
+        <div class="testimonial">
+            <img src="https://via.placeholder.com/50" alt="User">
+            <p>"Absolutely stunning craftsmanship!" ★★★★★</p>
+        </div>
+        <div class="testimonial">
+            <img src="https://via.placeholder.com/50" alt="User">
+            <p>"A perfect gift for my loved one." ★★★★★</p>
+        </div>
     </section>
 
     <footer class="footer">
