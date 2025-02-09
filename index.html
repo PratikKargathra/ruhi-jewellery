@@ -1,139 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruhi Jewellery</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body, html {
-            font-family: Arial, sans-serif;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-        /* Hero Section */
-        .hero {
-            position: relative;
-            height: 100vh;
-            background: black;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-        .brand-name {
-            color: gold;
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Ruhi Jewellery - Timeless Elegance in Every Piece</title>
+   <meta name="description" content="Discover exquisite jewellery collections crafted with elegance and tradition at Ruhi Jewellery. Your perfect adornment awaits.">
+   <!-- Google Fonts for modern jewellery design -->
+   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+   <style>
+      /* Global Styles */
+      * {
+         box-sizing: border-box;
+         margin: 0;
+         padding: 0;
+      }
+      body {
+         font-family: 'Montserrat', sans-serif;
+         background-color: #1a1a1a;
+         color: #d4af37;
+         text-align: center;
+         line-height: 1.6;
+      }
+      h1, h2, h3 {
+         font-family: 'Playfair Display', serif;
+      }
+      a {
+         text-decoration: none;
+         color: #d4af37;
+         transition: color 0.3s ease;
+      }
+      a:hover {
+         color: #fff;
+      }
+      .container {
+         width: 90%;
+         max-width: 1200px;
+         margin: auto;
+         overflow: hidden;
+      }
+      /* Animations */
+      .fade-in {
+         animation: fadeIn 1s ease-in-out;
+      }
+      @keyframes fadeIn {
+         from { opacity: 0; transform: translateY(20px); }
+         to { opacity: 1; transform: translateY(0); }
+      }
+      /* Diagonal Divider */
+      .diagonal-divider {
+         position: relative;
+         height: 50px;
+         background-color: #1a1a1a;
+         overflow: hidden;
+      }
+      .diagonal-divider::before {
+         content: "";
+         position: absolute;
+         top: -25px;
+         left: 0;
+         width: 100%;
+         height: 50px;
+         background-color: #000;
+         transform: skewY(-3deg);
+         transform-origin: 0;
+         animation: slide 1s ease-out forwards;
+      }
+      @keyframes slide {
+         from { transform: skewY(-3deg) translateX(-100%); }
+         to { transform: skewY(-3deg) translateX(0); }
+      }
+      /* Section 1: Brand Identity */
+      .brand-section {
+         padding: 100px 0;
+         background: #000;
+      }
+      .brand-section h1 {
+         font-size: 4rem;
+         margin-bottom: 20px;
+         color: #d4af37;
+      }
+      /* Section 2: Introduction */
+      .intro-section {
+         padding: 60px 20px;
+         background: #1a1a1a;
+      }
+      .intro-section .content {
+         max-width: 800px;
+         margin: auto;
+      }
+      .intro-section img {
+         width: 100%;
+         max-width: 600px;
+         height: auto;
+         border-radius: 10px;
+         margin-top: 20px;
+      }
+      /* Section 3: Our Collections */
+      .product-grid {
+         padding: 60px 20px;
+         background: #000;
+      }
+      .grid {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: center;
+         gap: 20px;
+      }
+      .product {
+         background: #1a1a1a;
+         padding: 20px;
+         border-radius: 10px;
+         width: calc(25% - 40px);
+         min-width: 200px;
+         transition: transform 0.3s ease;
+      }
+      .product:hover {
+         transform: scale(1.05);
+      }
+      .product img {
+         width: 100%;
+         border-radius: 10px;
+      }
+      .product h3 {
+         margin-top: 10px;
+      }
+      /* Section 4: Testimonials */
+      .testimonials {
+         padding: 60px 20px;
+         background: #1a1a1a;
+      }
+      .testimonial-grid {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: center;
+         gap: 20px;
+      }
+      .testimonial {
+         background: #000;
+         padding: 20px;
+         border-radius: 10px;
+         width: calc(33.33% - 40px);
+         min-width: 250px;
+         transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .testimonial:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+      }
+      .testimonial img {
+         width: 80px;
+         height: 80px;
+         border-radius: 50%;
+         object-fit: cover;
+         margin-bottom: 10px;
+      }
+      .testimonial p {
+         font-style: italic;
+         margin: 10px 0;
+      }
+      .testimonial h4 {
+         margin-top: 10px;
+      }
+      /* Section 5: Enquire Now */
+      .enquiry {
+         padding: 60px 20px;
+         background: #000;
+      }
+      .enquiry h1 {
+         margin-bottom: 20px;
+      }
+      .enquiry form {
+         max-width: 500px;
+         margin: auto;
+         display: flex;
+         flex-direction: column;
+         gap: 15px;
+      }
+      .enquiry input, .enquiry button {
+         padding: 15px;
+         font-size: 1rem;
+         border-radius: 5px;
+         border: none;
+      }
+      .enquiry input {
+         background: #333;
+         color: #d4af37;
+      }
+      .enquiry input:focus {
+         outline: none;
+         box-shadow: 0 0 5px #d4af37;
+      }
+      .enquiry button {
+         background: #d4af37;
+         color: #000;
+         cursor: pointer;
+         transition: background 0.3s ease;
+      }
+      .enquiry button:hover {
+         background: #b38b2c;
+      }
+      /* Footer */
+      footer {
+         background: #000;
+         padding: 40px 20px;
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: space-between;
+         align-items: center;
+         gap: 20px;
+      }
+      .footer-col {
+         flex: 1;
+         min-width: 250px;
+      }
+      .footer-col h3 {
+         font-family: 'Playfair Display', serif;
+         margin-bottom: 10px;
+      }
+      .footer-col p {
+         margin-bottom: 10px;
+      }
+      .footer-col button {
+         padding: 10px 20px;
+         background: #d4af37;
+         color: #000;
+         border: none;
+         cursor: pointer;
+         border-radius: 5px;
+         transition: background 0.3s ease;
+      }
+      .footer-col button:hover {
+         background: #b38b2c;
+      }
+      .social-links a {
+         margin: 0 10px;
+         font-size: 1.5rem;
+         transition: color 0.3s ease;
+      }
+      .social-links a:hover {
+         color: #fff;
+      }
+      /* Responsive */
+      @media (max-width: 768px) {
+         .product, .testimonial {
+            width: calc(50% - 40px);
+         }
+      }
+      @media (max-width: 480px) {
+         .product, .testimonial {
+            width: 100%;
+         }
+         .brand-section h1 {
             font-size: 3rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            z-index: 2;
-        }
-        /* Starry Background */
-        .stars, .stars2, .stars3 {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-        }
-        .stars::after, .stars2::after, .stars3::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            box-shadow: var(--stars);
-            animation: twinkle var(--duration) linear infinite;
-        }
-        .stars { --stars: 0 0 2px #fff, 20px 30px 2px #fff, 60px 80px 2px #fff, 100px 120px 2px #fff; --duration: 1.5s; }
-        .stars2 { --stars: 10px 20px 2px #fff, 50px 60px 2px #fff, 90px 100px 2px #fff, 130px 140px 2px #fff; --duration: 2s; }
-        .stars3 { --stars: 5px 15px 3px #fff, 40px 70px 3px #fff, 80px 110px 3px #fff, 120px 150px 3px #fff; --duration: 2.5s; }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 0.3; }
-        }
-        /* Content Section */
-        .content {
-            height: 100vh;
-            background: white;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 50px;
-            transform: translateY(100vh);
-            transition: transform 1s ease-in-out;
-        }
-        .content h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        .content p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-        .enquire-button {
-            background: gold;
-            color: black;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .enquire-button:hover {
-            background: darkgoldenrod;
-        }
-        .image img {
-            max-width: 100%;
-            height: auto;
-            margin-top: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        }
-    </style>
+         }
+      }
+   </style>
 </head>
 <body>
-
-    <section class="hero">
-        <div class="stars"></div>
-        <div class="stars2"></div>
-        <div class="stars3"></div>
-        <h1 class="brand-name">Ruhi Jewellery</h1>
-    </section>
-
-    <section class="content">
-        <h2>About Ruhi Jewellery</h2>
-        <p>Discover the exquisite craftsmanship of Ruhi Jewellery, where tradition meets elegance.</p>
-        <button class="enquire-button">Enquire Us</button>
-        <div class="image">
-            <img src="jewellery.jpg" alt="Jewellery">
-        </div>
-    </section>
-
-    <script>
-        document.addEventListener('scroll', function() {
-            const hero = document.querySelector('.hero');
-            const content = document.querySelector('.content');
-            const scrollPosition = window.scrollY;
-
-            if (scrollPosition > hero.clientHeight / 2) {
-                hero.style.opacity = '0';
-                content.style.transform = 'translateY(0)';
-            } else {
-                hero.style.opacity = '1';
-                content.style.transform = 'translateY(100vh)';
-            }
-        });
-    </script>
-
+   <!-- Section 1: Brand Identity (Only Brand Name) -->
+   <section class="brand-section fade-in">
+      <h1>Ruhi Jewellery</h1>
+   </section>
+   <div class="diagonal-divider"></div>
+   
+   <!-- Section 2: Introduction (Title, Description, Image) -->
+   <section class="intro-section fade-in">
+      <div class="container">
+         <div class="content">
+            <h2>Timeless Elegance in Every Piece</h2>
+            <p>Discover exquisite jewellery collections crafted with elegance and tradition. Your perfect adornment awaits.</p>
+            <img src="https://source.unsplash.com/600x400/?jewellery,design" alt="Elegant Jewellery">
+         </div>
+      </div>
+   </section>
+   <div class="diagonal-divider"></div>
+   
+   <!-- Section 3: Our Collections -->
+   <section class="product-grid fade-in">
+      <div class="container">
+         <h1>Our Collections</h1>
+         <div class="grid">
+            <div class="product">
+               <img src="https://source.unsplash.com/200x200/?gold-necklace" alt="Gold Necklace Set">
+               <h3>Gold Necklace Set</h3>
+            </div>
+            <div class="product">
+               <img src="https://source.unsplash.com/200x200/?diamond-ring" alt="Diamond Ring">
+               <h3>Diamond Ring</h3>
+            </div>
+            <div class="product">
+               <img src="https://source.unsplash.com/200x200/?bangles,jewellery" alt="Elegant Bangles">
+               <h3>Elegant Bangles</h3>
+            </div>
+            <div class="product">
+               <img src="https://source.unsplash.com/200x200/?earrings,jewellery" alt="Traditional Earrings">
+               <h3>Traditional Earrings</h3>
+            </div>
+         </div>
+      </div>
+   </section>
+   <div class="diagonal-divider"></div>
+   
+   <!-- Section 4: Testimonials / Reviews -->
+   <section class="testimonials fade-in">
+      <div class="container">
+         <h2>What Our Clients Say</h2>
+         <div class="testimonial-grid">
+            <div class="testimonial">
+               <img src="https://source.unsplash.com/100x100/?person" alt="Client 1">
+               <p>"Absolutely stunning pieces! The quality and craftsmanship are unmatched."</p>
+               <h4>Emily R.</h4>
+            </div>
+            <div class="testimonial">
+               <img src="https://source.unsplash.com/100x100/?woman" alt="Client 2">
+               <p>"I adore the designs. Ruhi Jewellery truly brings elegance to every piece."</p>
+               <h4>Sophia L.</h4>
+            </div>
+            <div class="testimonial">
+               <img src="https://source.unsplash.com/100x100/?lady" alt="Client 3">
+               <p>"A perfect blend of tradition and modern style. Highly recommended!"</p>
+               <h4>Olivia M.</h4>
+            </div>
+         </div>
+      </div>
+   </section>
+   <div class="diagonal-divider"></div>
+   
+   <!-- Section 5: Enquire Now -->
+   <section class="enquiry fade-in" id="enquire">
+      <div class="container">
+         <h1>Enquire Now</h1>
+         <form id="enquiryForm">
+            <input type="text" name="name" id="name" placeholder="Your Name" required>
+            <input type="email" name="email" id="email" placeholder="Your Email" required>
+            <input type="tel" name="phone" id="phone" placeholder="Your Phone Number" required>
+            <button type="submit">Submit</button>
+         </form>
+      </div>
+   </section>
+   
+   <!-- Footer -->
+   <footer>
+      <div class="footer-col">
+         <h3>Ruhi Jewellery</h3>
+         <p>Experience timeless elegance with our curated collection of fine jewellery.</p>
+         <button onclick="window.location.href='mailto:contact@ruhijewellery.com'">Contact Us</button>
+      </div>
+      <div class="footer-col social-links">
+         <h3>Follow Us</h3>
+         <a href="#" target="_blank">LinkedIn</a>
+         <a href="#" target="_blank">Instagram</a>
+         <a href="#" target="_blank">Facebook</a>
+         <a href="#" target="_blank">Twitter</a>
+      </div>
+   </footer>
+   
+   <script>
+      document.getElementById("enquiryForm").addEventListener("submit", function(event) {
+         event.preventDefault();
+         let name = document.getElementById("name").value;
+         let email = document.getElementById("email").value;
+         let phone = document.getElementById("phone").value;
+         alert("Thank you, " + name + "! We will get back to you soon.");
+      });
+   </script>
 </body>
 </html>
