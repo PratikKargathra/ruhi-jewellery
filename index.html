@@ -10,7 +10,7 @@
   <!-- Google Fonts for modern design -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Theme Variables */
+    /* Theme Variables – using system preference (no manual toggle) */
     :root {
       --bg-color: #1a1a1a;
       --text-color: #d4af37;
@@ -49,25 +49,11 @@
       transform: translateY(0);
     }
     
-    /* Theme Toggle Button */
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--section-bg);
-      border: 2px solid var(--accent-color);
-      color: var(--accent-color);
-      padding: 10px 15px;
-      cursor: pointer;
-      z-index: 1000;
-      border-radius: 5px;
-    }
-    
-    /* Section 1: Brand Identity */
+    /* Section 1: Brand Identity – Jewellery Background */
     .brand-section {
       padding: 120px 0;
       text-align: center;
-      background: url('https://source.unsplash.com/1600x900/?night,stars') center/cover no-repeat;
+      background: url('https://source.unsplash.com/1600x900/?jewellery') center/cover no-repeat;
       position: relative;
     }
     .brand-section::after {
@@ -81,9 +67,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 4rem;
       color: var(--accent-color);
-      /* Removed glowing animation */
     }
-    /* Adjust brand title for light theme */
     .light-theme .brand-section h1 {
       color: #444;
     }
@@ -136,7 +120,7 @@
       border-radius: 10px;
     }
     
-    /* Section 3: Our Collections */
+    /* Section 3: Our Collections – Improved Product Design */
     .product-grid {
       padding: 60px 0;
       background-color: var(--bg-color);
@@ -157,9 +141,14 @@
       background-size: cover;
       background-position: center;
       border-radius: 10px;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      overflow: hidden;
     }
-    .product:hover { transform: scale(1.05); }
+    .product:hover { 
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+    }
     .product .overlay {
       position: absolute;
       bottom: 0;
@@ -272,7 +261,7 @@
     }
     .enquiry button:hover { background: #b38b2c; }
     
-    /* Footer */
+    /* Footer – Even spacing similar to Get in Touch */
     footer {
       background: var(--section-bg);
       padding: 40px 20px;
@@ -281,11 +270,12 @@
       justify-content: space-between;
       gap: 20px;
     }
-    .footer-left {
+    .footer-left, .footer-right {
       flex: 1;
       min-width: 250px;
-      text-align: left;
+      padding: 20px;
     }
+    .footer-left { text-align: left; }
     .footer-left h3 { font-size: 1.8rem; }
     .footer-left p { margin: 10px 0; }
     .footer-left button {
@@ -298,11 +288,7 @@
       transition: background 0.3s;
     }
     .footer-left button:hover { background: #b38b2c; }
-    .footer-right {
-      flex: 1;
-      min-width: 250px;
-      text-align: right;
-    }
+    .footer-right { text-align: right; }
     .footer-right h3 { font-size: 1.2rem; }
     .footer-right .social-links {
       display: flex;
@@ -340,9 +326,6 @@
   </style>
 </head>
 <body>
-  <!-- Theme Toggle Button -->
-  <div class="theme-toggle" onclick="toggleTheme()">Toggle Theme</div>
-  
   <!-- Section 1: Brand Identity -->
   <section class="brand-section animate-on-scroll">
     <div class="container">
@@ -371,7 +354,7 @@
     <div class="container">
       <h2 style="margin-bottom: 40px;">Our Collections</h2>
       <div class="grid">
-        <div class="product" style="background-image: url('https://source.unsplash.com/featured/?gold,necklace');">
+        <div class="product" style="background-image: url('https://img.freepik.com/free-photo/gold-necklace-is-piece-fabric-with-red-cloth-background_1340-42873.jpg');">
           <div class="overlay"><h3>Gold Necklace Set</h3></div>
         </div>
         <div class="product" style="background-image: url('https://source.unsplash.com/featured/?diamond,ring');">
@@ -456,11 +439,6 @@
   </footer>
   
   <script>
-    // Theme Toggle Functionality
-    function toggleTheme() {
-      document.body.classList.toggle("light-theme");
-    }
-    
     // Intersection Observer for scroll-triggered animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
