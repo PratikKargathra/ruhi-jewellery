@@ -7,8 +7,8 @@
   <meta name="description" content="Discover exquisite jewellery collections crafted with elegance and tradition at Ruhi Jewellery.">
   <!-- Font Awesome for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Google Fonts for modern jewellery design -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts for modern design -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <style>
     /* Theme Variables */
     :root {
@@ -27,30 +27,17 @@
       --input-bg: #eee;
       --input-text: #333;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { 
       font-family: 'Montserrat', sans-serif; 
       background-color: var(--bg-color); 
       color: var(--text-color); 
-      line-height: 1.6; 
+      line-height: 1.6;
     }
     a { text-decoration: none; color: var(--accent-color); transition: color 0.3s; }
     a:hover { color: var(--text-color); }
-
     .container { width: 90%; max-width: 1200px; margin: auto; padding: 20px 0; }
-
-    /* Cross-lined Background Pattern */
-    .cross-bg {
-      background-image: 
-        linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
-        linear-gradient(-45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.05) 75%),
-        linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.05) 75%);
-      background-size: 20px 20px;
-      background-position: 0 0, 0 10px, 10px -10px, -10px 0;
-    }
-
+    
     /* Scroll Animation */
     .animate-on-scroll {
       opacity: 0;
@@ -61,7 +48,7 @@
       opacity: 1;
       transform: translateY(0);
     }
-
+    
     /* Theme Toggle Button */
     .theme-toggle {
       position: fixed;
@@ -75,13 +62,13 @@
       z-index: 1000;
       border-radius: 5px;
     }
-
-    /* Section 1: Brand Identity (Starry Sky Background with Glowing Text) */
+    
+    /* Section 1: Brand Identity */
     .brand-section {
-      position: relative;
       padding: 120px 0;
       text-align: center;
       background: url('https://source.unsplash.com/1600x900/?night,stars') center/cover no-repeat;
+      position: relative;
     }
     .brand-section::after {
       content: '';
@@ -91,39 +78,69 @@
     }
     .brand-section h1 {
       position: relative;
-      font-family: 'Playfair Display', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 4rem;
       color: var(--accent-color);
-      animation: glow 2s infinite alternate;
+      /* Removed glowing animation */
     }
-    @keyframes glow {
-      from { text-shadow: 0 0 10px var(--accent-color); }
-      to { text-shadow: 0 0 20px var(--accent-color); }
+    /* Adjust brand title for light theme */
+    .light-theme .brand-section h1 {
+      color: #444;
     }
-
-    /* Section 2: Introduction */
+    
+    /* Section 2: Introduction (Row Layout) */
     .intro-section {
       padding: 60px 0;
-      text-align: center;
       background-color: var(--section-bg);
     }
-    .intro-section .content {
-      max-width: 800px;
-      margin: auto;
+    .intro-section .row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .intro-section .text-col {
+      flex: 1;
+      min-width: 300px;
+      text-align: left;
       padding: 20px;
     }
-    .intro-section img {
+    .intro-section .text-col h2 {
+      margin-bottom: 20px;
+    }
+    .intro-section .text-col p {
+      margin-bottom: 20px;
+    }
+    .intro-section .text-col button {
+      padding: 10px 20px;
+      background: var(--accent-color);
+      color: var(--bg-color);
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .intro-section .text-col button:hover {
+      background: #b38b2c;
+    }
+    .intro-section .img-col {
+      flex: 1;
+      min-width: 300px;
+      text-align: center;
+      padding: 20px;
+    }
+    .intro-section .img-col img {
       width: 100%;
       max-width: 600px;
-      margin: 20px 0;
       border-radius: 10px;
     }
-
+    
     /* Section 3: Our Collections */
     .product-grid {
       padding: 60px 0;
-      text-align: center;
       background-color: var(--bg-color);
+      text-align: center;
     }
     .product-grid h2 { margin-bottom: 40px; }
     .grid {
@@ -137,7 +154,8 @@
       position: relative;
       width: 200px;
       height: 200px;
-      background: url('https://source.unsplash.com/600x400/?jewellery') center/cover no-repeat;
+      background-size: cover;
+      background-position: center;
       border-radius: 10px;
       transition: transform 0.3s;
     }
@@ -155,12 +173,12 @@
       font-size: 1.1rem;
       margin: 0;
     }
-
+    
     /* Section 4: Testimonials */
     .testimonials {
       padding: 60px 0;
-      text-align: center;
       background-color: var(--section-bg);
+      text-align: center;
     }
     .testimonials h2 { margin-bottom: 40px; }
     .testimonial-grid {
@@ -178,9 +196,6 @@
       min-width: 250px;
       transition: transform 0.3s, box-shadow 0.3s;
       text-align: left;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
     }
     .testimonial:hover {
       transform: translateY(-5px);
@@ -190,12 +205,14 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      margin-bottom: 10px;
     }
     .testimonial .client-info .avatar {
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      background: url('https://source.unsplash.com/100x100/?person') center/cover no-repeat;
+      background-size: cover;
+      background-position: center;
     }
     .testimonial .client-info h4 {
       margin: 0;
@@ -203,7 +220,7 @@
       color: var(--accent-color);
     }
     .testimonial p { font-style: italic; }
-
+    
     /* Section 5: Enquire Now (Two-Column Layout) */
     .enquiry {
       padding: 60px 0;
@@ -214,7 +231,7 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       gap: 20px;
     }
     .enquiry .text-col {
@@ -254,7 +271,7 @@
       transition: background 0.3s;
     }
     .enquiry button:hover { background: #b38b2c; }
-
+    
     /* Footer */
     footer {
       background: var(--section-bg);
@@ -298,18 +315,17 @@
     .footer-right .social-links a {
       display: flex;
       align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
+      gap: 8px;
+      padding: 8px 12px;
       background: var(--bg-color);
-      border-radius: 50%;
+      border-radius: 5px;
       transition: background 0.3s;
     }
     .footer-right .social-links a:hover {
       background: var(--accent-color);
       color: var(--bg-color);
     }
-
+    
     /* Responsive */
     @media (max-width: 768px) {
       .testimonial { width: calc(50% - 40px); }
@@ -326,68 +342,73 @@
 <body>
   <!-- Theme Toggle Button -->
   <div class="theme-toggle" onclick="toggleTheme()">Toggle Theme</div>
-
+  
   <!-- Section 1: Brand Identity -->
   <section class="brand-section animate-on-scroll">
     <div class="container">
       <h1>Ruhi Jewellery</h1>
     </div>
   </section>
-
-  <!-- Section 2: Introduction -->
-  <section class="intro-section cross-bg animate-on-scroll">
+  
+  <!-- Section 2: Introduction (Row Layout) -->
+  <section class="intro-section animate-on-scroll">
     <div class="container">
-      <div class="content">
-        <h2>Timeless Elegance in Every Piece</h2>
-        <p style="margin-bottom: 20px;">Discover exquisite jewellery collections crafted with elegance and tradition. Your perfect adornment awaits.</p>
-        <img src="https://source.unsplash.com/600x400/?jewellery" alt="Elegant Jewellery">
+      <div class="row">
+        <div class="text-col">
+          <h2>Timeless Elegance in Every Piece</h2>
+          <p style="margin-bottom: 20px;">Discover our exquisite collections crafted with passion and tradition. For inquiries, get in touch with us today.</p>
+          <button onclick="window.location.href='mailto:contact@ruhijewellery.com'">Contact Us</button>
+        </div>
+        <div class="img-col">
+          <img src="https://source.unsplash.com/featured/?jewellery" alt="Elegant Jewellery">
+        </div>
       </div>
     </div>
   </section>
-
+  
   <!-- Section 3: Our Collections -->
   <section class="product-grid animate-on-scroll">
     <div class="container">
       <h2 style="margin-bottom: 40px;">Our Collections</h2>
       <div class="grid">
-        <div class="product">
+        <div class="product" style="background-image: url('https://source.unsplash.com/featured/?gold,necklace');">
           <div class="overlay"><h3>Gold Necklace Set</h3></div>
         </div>
-        <div class="product">
+        <div class="product" style="background-image: url('https://source.unsplash.com/featured/?diamond,ring');">
           <div class="overlay"><h3>Diamond Ring</h3></div>
         </div>
-        <div class="product">
+        <div class="product" style="background-image: url('https://source.unsplash.com/featured/?bangles');">
           <div class="overlay"><h3>Elegant Bangles</h3></div>
         </div>
-        <div class="product">
+        <div class="product" style="background-image: url('https://source.unsplash.com/featured/?earrings');">
           <div class="overlay"><h3>Traditional Earrings</h3></div>
         </div>
       </div>
     </div>
   </section>
-
+  
   <!-- Section 4: Testimonials -->
-  <section class="testimonials cross-bg animate-on-scroll">
+  <section class="testimonials animate-on-scroll">
     <div class="container">
       <h2 style="margin-bottom: 40px;">What Our Clients Say</h2>
       <div class="testimonial-grid">
         <div class="testimonial">
           <div class="client-info">
-            <div class="avatar" style="background-image: url('https://source.unsplash.com/100x100/?person');"></div>
+            <div class="avatar" style="background-image: url('https://source.unsplash.com/featured/?person');"></div>
             <h4>Emily R.</h4>
           </div>
           <p>"Absolutely stunning pieces! The quality and craftsmanship are unmatched."</p>
         </div>
         <div class="testimonial">
           <div class="client-info">
-            <div class="avatar" style="background-image: url('https://source.unsplash.com/100x100/?woman');"></div>
+            <div class="avatar" style="background-image: url('https://source.unsplash.com/featured/?woman');"></div>
             <h4>Sophia L.</h4>
           </div>
           <p>"I adore the designs. Ruhi Jewellery truly brings elegance to every piece."</p>
         </div>
         <div class="testimonial">
           <div class="client-info">
-            <div class="avatar" style="background-image: url('https://source.unsplash.com/100x100/?lady');"></div>
+            <div class="avatar" style="background-image: url('https://source.unsplash.com/featured/?lady');"></div>
             <h4>Olivia M.</h4>
           </div>
           <p>"A perfect blend of tradition and modern style. Highly recommended!"</p>
@@ -395,7 +416,7 @@
       </div>
     </div>
   </section>
-
+  
   <!-- Section 5: Enquire Now -->
   <section class="enquiry animate-on-scroll">
     <div class="container">
@@ -415,7 +436,7 @@
       </div>
     </div>
   </section>
-
+  
   <!-- Footer -->
   <footer>
     <div class="footer-left">
@@ -426,20 +447,20 @@
     <div class="footer-right">
       <h3>Follow Us</h3>
       <div class="social-links">
-        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+        <a href="#" target="_blank"><i class="fab fa-twitter"></i><span>Twitter</span></a>
       </div>
     </div>
   </footer>
-
+  
   <script>
     // Theme Toggle Functionality
     function toggleTheme() {
       document.body.classList.toggle("light-theme");
     }
-
+    
     // Intersection Observer for scroll-triggered animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -451,7 +472,7 @@
     document.querySelectorAll(".animate-on-scroll").forEach((el) => {
       observer.observe(el);
     });
-
+    
     // Enquiry Form Submission
     document.getElementById("enquiryForm").addEventListener("submit", function(event) {
       event.preventDefault();
