@@ -5,53 +5,107 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ruhi Jewellery - Timeless Elegance</title>
   <meta name="description" content="Discover exquisite jewellery collections crafted with elegance and tradition at Ruhi Jewellery.">
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Google Fonts for modern jewellery design -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Global Styles */
+    /* Theme Variables */
+    :root {
+      --bg-color: #1a1a1a;
+      --text-color: #d4af37;
+      --section-bg: #000;
+      --accent-color: #d4af37;
+      --input-bg: #333;
+      --input-text: #d4af37;
+    }
+    .light-theme {
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --section-bg: #fff;
+      --accent-color: #d4af37;
+      --input-bg: #eee;
+      --input-text: #333;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Montserrat', sans-serif; background-color: #1a1a1a; color: #d4af37; line-height: 1.6; }
-    h1, h2, h3 { font-family: 'Playfair Display', serif; margin-bottom: 20px; }
+    body { 
+      font-family: 'Montserrat', sans-serif; 
+      background-color: var(--bg-color); 
+      color: var(--text-color); 
+      line-height: 1.6; 
+    }
+    a { text-decoration: none; color: var(--accent-color); transition: color 0.3s; }
+    a:hover { color: var(--text-color); }
+
     .container { width: 90%; max-width: 1200px; margin: auto; padding: 20px 0; }
-    a { text-decoration: none; color: #d4af37; transition: color 0.3s; }
-    a:hover { color: #fff; }
 
-    /* Diagonal Animated Divider using SVG (Inspired by CodyHouse) */
-    .diagonal-divider {
-      position: relative;
-      width: 100%;
-      height: 80px;
-      overflow: hidden;
-    }
-    .diagonal-divider svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      transform: translateX(-100%);
-      animation: slideIn 1s forwards;
-    }
-    @keyframes slideIn {
-      to { transform: translateX(0); }
+    /* Cross-lined Background Pattern */
+    .cross-bg {
+      background-image: 
+        linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.05) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.05) 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0;
     }
 
-    /* Section 1: Brand Identity */
+    /* Scroll Animation */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Theme Toggle Button */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--section-bg);
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
+      padding: 10px 15px;
+      cursor: pointer;
+      z-index: 1000;
+      border-radius: 5px;
+    }
+
+    /* Section 1: Brand Identity (Starry Sky Background with Glowing Text) */
     .brand-section {
-      padding: 100px 0;
-      background: #000;
+      position: relative;
+      padding: 120px 0;
       text-align: center;
+      background: url('https://source.unsplash.com/1600x900/?night,stars') center/cover no-repeat;
+    }
+    .brand-section::after {
+      content: '';
+      position: absolute;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.5);
     }
     .brand-section h1 {
+      position: relative;
+      font-family: 'Playfair Display', serif;
       font-size: 4rem;
-      color: #d4af37;
+      color: var(--accent-color);
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px var(--accent-color); }
+      to { text-shadow: 0 0 20px var(--accent-color); }
     }
 
     /* Section 2: Introduction */
     .intro-section {
       padding: 60px 0;
-      background: #1a1a1a;
       text-align: center;
+      background-color: var(--section-bg);
     }
     .intro-section .content {
       max-width: 800px;
@@ -68,9 +122,10 @@
     /* Section 3: Our Collections */
     .product-grid {
       padding: 60px 0;
-      background: #000;
       text-align: center;
+      background-color: var(--bg-color);
     }
+    .product-grid h2 { margin-bottom: 40px; }
     .grid {
       display: flex;
       flex-wrap: wrap;
@@ -86,14 +141,12 @@
       border-radius: 10px;
       transition: transform 0.3s;
     }
-    .product:hover {
-      transform: scale(1.05);
-    }
+    .product:hover { transform: scale(1.05); }
     .product .overlay {
       position: absolute;
       bottom: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0,0,0,0.6);
       padding: 10px;
       border-radius: 0 0 10px 10px;
     }
@@ -106,9 +159,10 @@
     /* Section 4: Testimonials */
     .testimonials {
       padding: 60px 0;
-      background: #1a1a1a;
       text-align: center;
+      background-color: var(--section-bg);
     }
+    .testimonials h2 { margin-bottom: 40px; }
     .testimonial-grid {
       display: flex;
       flex-wrap: wrap;
@@ -117,46 +171,44 @@
       padding: 20px;
     }
     .testimonial {
-      background: #000;
+      background: var(--bg-color);
       padding: 20px;
       border-radius: 10px;
       width: calc(33.33% - 40px);
       min-width: 250px;
       transition: transform 0.3s, box-shadow 0.3s;
       text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
     .testimonial:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
     }
-    .testimonial .avatar {
-      float: left;
-      margin-right: 10px;
+    .testimonial .client-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .testimonial .client-info .avatar {
       width: 60px;
       height: 60px;
       border-radius: 50%;
       background: url('https://source.unsplash.com/100x100/?person') center/cover no-repeat;
     }
-    .testimonial .client-info {
-      overflow: hidden;
-      padding-top: 5px;
-    }
     .testimonial .client-info h4 {
       margin: 0;
       font-size: 1.1rem;
-      color: #d4af37;
+      color: var(--accent-color);
     }
-    .testimonial p {
-      clear: both;
-      font-style: italic;
-      margin-top: 10px;
-    }
+    .testimonial p { font-style: italic; }
 
-    /* Section 5: Enquire Now (Row Layout) */
+    /* Section 5: Enquire Now (Two-Column Layout) */
     .enquiry {
       padding: 60px 0;
-      background: #000;
-      color: #fff;
+      background-color: var(--section-bg);
+      color: var(--text-color);
     }
     .enquiry .row {
       display: flex;
@@ -188,31 +240,29 @@
       border: none;
     }
     .enquiry input {
-      background: #333;
-      color: #d4af37;
+      background: var(--input-bg);
+      color: var(--input-text);
     }
     .enquiry input:focus {
       outline: none;
-      box-shadow: 0 0 5px #d4af37;
+      box-shadow: 0 0 5px var(--accent-color);
     }
     .enquiry button {
-      background: #d4af37;
-      color: #000;
+      background: var(--accent-color);
+      color: var(--bg-color);
       cursor: pointer;
       transition: background 0.3s;
     }
-    .enquiry button:hover {
-      background: #b38b2c;
-    }
+    .enquiry button:hover { background: #b38b2c; }
 
     /* Footer */
     footer {
-      background: #000;
+      background: var(--section-bg);
       padding: 40px 20px;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      align-items: center;
+      gap: 20px;
     }
     .footer-left {
       flex: 1;
@@ -223,16 +273,14 @@
     .footer-left p { margin: 10px 0; }
     .footer-left button {
       padding: 10px 20px;
-      background: #d4af37;
-      color: #000;
+      background: var(--accent-color);
+      color: var(--bg-color);
       border: none;
       cursor: pointer;
       border-radius: 5px;
       transition: background 0.3s;
     }
-    .footer-left button:hover {
-      background: #b38b2c;
-    }
+    .footer-left button:hover { background: #b38b2c; }
     .footer-right {
       flex: 1;
       min-width: 250px;
@@ -240,29 +288,33 @@
     }
     .footer-right h3 { font-size: 1.2rem; }
     .footer-right .social-links {
-      display: inline-flex;
-      gap: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
       margin-top: 10px;
       font-size: 0.9rem;
-      align-items: center;
     }
     .footer-right .social-links a {
-      display: inline-block;
-      padding: 8px;
-      background: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--bg-color);
       border-radius: 50%;
       transition: background 0.3s;
     }
     .footer-right .social-links a:hover {
-      background: #d4af37;
-      color: #000;
+      background: var(--accent-color);
+      color: var(--bg-color);
     }
 
     /* Responsive */
     @media (max-width: 768px) {
       .testimonial { width: calc(50% - 40px); }
       .enquiry .row { flex-direction: column; }
-      .footer-right { text-align: center; margin-top: 20px; }
+      .footer-right { text-align: center; }
     }
     @media (max-width: 480px) {
       .testimonial { width: 100%; }
@@ -272,20 +324,18 @@
   </style>
 </head>
 <body>
+  <!-- Theme Toggle Button -->
+  <div class="theme-toggle" onclick="toggleTheme()">Toggle Theme</div>
+
   <!-- Section 1: Brand Identity -->
-  <section class="brand-section">
+  <section class="brand-section animate-on-scroll">
     <div class="container">
       <h1>Ruhi Jewellery</h1>
     </div>
   </section>
-  <!-- Diagonal Divider -->
-  <div class="diagonal-divider">
-    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-      <polygon fill="#000" points="0,100 100,0 100,100"/>
-    </svg>
-  </div>
+
   <!-- Section 2: Introduction -->
-  <section class="intro-section">
+  <section class="intro-section cross-bg animate-on-scroll">
     <div class="container">
       <div class="content">
         <h2>Timeless Elegance in Every Piece</h2>
@@ -294,14 +344,9 @@
       </div>
     </div>
   </section>
-  <!-- Diagonal Divider -->
-  <div class="diagonal-divider">
-    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-      <polygon fill="#000" points="0,100 100,0 100,100"/>
-    </svg>
-  </div>
+
   <!-- Section 3: Our Collections -->
-  <section class="product-grid">
+  <section class="product-grid animate-on-scroll">
     <div class="container">
       <h2 style="margin-bottom: 40px;">Our Collections</h2>
       <div class="grid">
@@ -320,34 +365,29 @@
       </div>
     </div>
   </section>
-  <!-- Diagonal Divider -->
-  <div class="diagonal-divider">
-    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-      <polygon fill="#000" points="0,100 100,0 100,100"/>
-    </svg>
-  </div>
+
   <!-- Section 4: Testimonials -->
-  <section class="testimonials">
+  <section class="testimonials cross-bg animate-on-scroll">
     <div class="container">
       <h2 style="margin-bottom: 40px;">What Our Clients Say</h2>
       <div class="testimonial-grid">
         <div class="testimonial">
-          <div class="avatar"></div>
           <div class="client-info">
+            <div class="avatar" style="background-image: url('https://source.unsplash.com/100x100/?person');"></div>
             <h4>Emily R.</h4>
           </div>
           <p>"Absolutely stunning pieces! The quality and craftsmanship are unmatched."</p>
         </div>
         <div class="testimonial">
-          <div class="avatar" style="background-image: url('https://source.unsplash.com/100x100/?woman');"></div>
           <div class="client-info">
+            <div class="avatar" style="background-image: url('https://source.unsplash.com/100x100/?woman');"></div>
             <h4>Sophia L.</h4>
           </div>
           <p>"I adore the designs. Ruhi Jewellery truly brings elegance to every piece."</p>
         </div>
         <div class="testimonial">
-          <div class="avatar" style="background-image: url('https://source.unsplash.com/100x100/?lady');"></div>
           <div class="client-info">
+            <div class="avatar" style="background-image: url('https://source.unsplash.com/100x100/?lady');"></div>
             <h4>Olivia M.</h4>
           </div>
           <p>"A perfect blend of tradition and modern style. Highly recommended!"</p>
@@ -355,19 +395,14 @@
       </div>
     </div>
   </section>
-  <!-- Diagonal Divider -->
-  <div class="diagonal-divider">
-    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-      <polygon fill="#000" points="0,100 100,0 100,100"/>
-    </svg>
-  </div>
-  <!-- Section 5: Enquire Now (Row Layout) -->
-  <section class="enquiry">
+
+  <!-- Section 5: Enquire Now -->
+  <section class="enquiry animate-on-scroll">
     <div class="container">
       <div class="row">
         <div class="text-col">
-          <h2>Enquire Now</h2>
-          <p style="margin-bottom: 20px;">Get in touch with us for more details about our exquisite collections.</p>
+          <h2>Get in Touch</h2>
+          <p style="margin-bottom: 20px;">Have questions or need more details? Reach out to us and we’ll be happy to assist you with our exquisite collections.</p>
         </div>
         <div class="form-col">
           <form id="enquiryForm">
@@ -380,6 +415,7 @@
       </div>
     </div>
   </section>
+
   <!-- Footer -->
   <footer>
     <div class="footer-left">
@@ -390,19 +426,36 @@
     <div class="footer-right">
       <h3>Follow Us</h3>
       <div class="social-links">
-        <a href="#" target="_blank">LinkedIn</a>
-        <a href="#" target="_blank">Instagram</a>
-        <a href="#" target="_blank">Facebook</a>
-        <a href="#" target="_blank">Twitter</a>
+        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
       </div>
     </div>
   </footer>
+
   <script>
+    // Theme Toggle Functionality
+    function toggleTheme() {
+      document.body.classList.toggle("light-theme");
+    }
+
+    // Intersection Observer for scroll-triggered animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    });
+    document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+      observer.observe(el);
+    });
+
+    // Enquiry Form Submission
     document.getElementById("enquiryForm").addEventListener("submit", function(event) {
       event.preventDefault();
       let name = document.getElementById("name").value;
-      let email = document.getElementById("email").value;
-      let phone = document.getElementById("phone").value;
       alert("Thank you, " + name + "! We will get back to you soon.");
     });
   </script>
