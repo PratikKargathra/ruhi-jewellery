@@ -352,15 +352,13 @@
       color: var(--bg-color);
     }
     
-    /* Responsive */
+    /* Responsive adjustments for mobile: center align all text */
     @media (max-width: 768px) {
-      .testimonial {
-        width: calc(50% - 40px);
+      .intro-section .text-col,
+      .enquiry .text-col {
+        text-align: center;
       }
-      .enquiry .row {
-        flex-direction: column;
-      }
-      .footer-right {
+      .footer-left, .footer-right {
         text-align: center;
       }
     }
