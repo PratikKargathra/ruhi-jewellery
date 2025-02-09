@@ -10,7 +10,7 @@
   <!-- Google Fonts for modern design -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Theme Variables – using system preference */
+    /* Base Theme Variables */
     :root {
       --bg-color: #1a1a1a;
       --text-color: #d4af37;
@@ -19,19 +19,19 @@
       --input-bg: #333;
       --input-text: #d4af37;
     }
-    .light-theme {
-      --bg-color: #f9f9f9;
-      --text-color: #333;
-      --section-bg: #fff;
-      --accent-color: #d4af37;
-      --input-bg: #eee;
-      --input-text: #333;
+    /* Automatically apply light theme based on system preference */
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg-color: #f9f9f9;
+        --text-color: #333;
+        --section-bg: #fff;
+        --accent-color: #d4af37;
+        --input-bg: #eee;
+        --input-text: #333;
+      }
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body { 
       font-family: 'Montserrat', sans-serif; 
       background-color: var(--bg-color); 
@@ -43,15 +43,19 @@
       color: var(--accent-color);
       transition: color 0.3s;
     }
-    a:hover {
-      color: var(--text-color);
-    }
+    a:hover { color: var(--text-color); }
+    
     .container {
       width: 90%;
       max-width: 1200px;
       margin: auto;
       padding: 20px 0;
     }
+    /* For mobile, reduce horizontal padding to 16px */
+    @media (max-width: 768px) {
+      .container { padding: 20px 16px; }
+    }
+    
     /* Scroll Animation */
     .animate-on-scroll {
       opacity: 0;
@@ -73,10 +77,7 @@
     .brand-section::after {
       content: '';
       position: absolute;
-      top:0;
-      left:0;
-      right:0;
-      bottom:0;
+      top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0,0,0,0.5);
     }
     .brand-section h1 {
@@ -85,8 +86,8 @@
       font-size: 4rem;
       color: var(--accent-color);
     }
-    .light-theme .brand-section h1 {
-      color: #444;
+    @media (max-width: 480px) {
+      .brand-section h1 { font-size: 3rem; }
     }
     
     /* Section 2: Introduction (Row Layout) */
@@ -107,12 +108,8 @@
       text-align: left;
       padding: 20px;
     }
-    .intro-section .text-col h2 {
-      margin-bottom: 20px;
-    }
-    .intro-section .text-col p {
-      margin-bottom: 20px;
-    }
+    .intro-section .text-col h2 { margin-bottom: 20px; }
+    .intro-section .text-col p { margin-bottom: 20px; }
     .intro-section .text-col button {
       padding: 10px 20px;
       background: var(--accent-color);
@@ -122,9 +119,7 @@
       border-radius: 5px;
       transition: background 0.3s;
     }
-    .intro-section .text-col button:hover {
-      background: #b38b2c;
-    }
+    .intro-section .text-col button:hover { background: #b38b2c; }
     .intro-section .img-col {
       flex: 1;
       min-width: 300px;
@@ -136,6 +131,10 @@
       max-width: 600px;
       border-radius: 10px;
     }
+    /* On mobile, center align the text */
+    @media (max-width: 768px) {
+      .intro-section .text-col { text-align: center; }
+    }
     
     /* Section 3: Our Collections – Improved Product Design */
     .product-grid {
@@ -143,9 +142,7 @@
       background-color: var(--bg-color);
       text-align: center;
     }
-    .product-grid h2 {
-      margin-bottom: 40px;
-    }
+    .product-grid h2 { margin-bottom: 40px; }
     .grid {
       display: flex;
       flex-wrap: wrap;
@@ -189,9 +186,7 @@
       background-color: var(--section-bg);
       text-align: center;
     }
-    .testimonials h2 {
-      margin-bottom: 40px;
-    }
+    .testimonials h2 { margin-bottom: 40px; }
     .testimonial-grid {
       display: flex;
       flex-wrap: wrap;
@@ -230,9 +225,7 @@
       font-size: 1.1rem;
       color: var(--accent-color);
     }
-    .testimonial p {
-      font-style: italic;
-    }
+    .testimonial p { font-style: italic; }
     
     /* Section 5: Enquire Now (Two-Column Layout) */
     .enquiry {
@@ -284,9 +277,7 @@
       cursor: pointer;
       transition: background 0.3s;
     }
-    .enquiry button:hover {
-      background: #b38b2c;
-    }
+    .enquiry button:hover { background: #b38b2c; }
     
     /* Footer – Even spacing on both sides */
     footer {
@@ -303,15 +294,9 @@
       min-width: 300px;
       padding: 20px;
     }
-    .footer-left {
-      text-align: left;
-    }
-    .footer-left h3 {
-      font-size: 1.8rem;
-    }
-    .footer-left p {
-      margin: 10px 0;
-    }
+    .footer-left { text-align: left; }
+    .footer-left h3 { font-size: 1.8rem; }
+    .footer-left p { margin: 10px 0; }
     .footer-left button {
       padding: 10px 20px;
       background: var(--accent-color);
@@ -321,15 +306,9 @@
       border-radius: 5px;
       transition: background 0.3s;
     }
-    .footer-left button:hover {
-      background: #b38b2c;
-    }
-    .footer-right {
-      text-align: right;
-    }
-    .footer-right h3 {
-      font-size: 1.2rem;
-    }
+    .footer-left button:hover { background: #b38b2c; }
+    .footer-right { text-align: right; }
+    .footer-right h3 { font-size: 1.2rem; }
     .footer-right .social-links {
       display: flex;
       flex-direction: column;
@@ -351,28 +330,15 @@
       background: var(--accent-color);
       color: var(--bg-color);
     }
-    
-    /* Responsive adjustments for mobile: center align all text */
+    /* On mobile, center align footer text and social links */
     @media (max-width: 768px) {
+      .footer-left, .footer-right { text-align: center; }
+      .footer-right .social-links { align-items: center; }
       .intro-section .text-col,
-      .enquiry .text-col {
-        text-align: center;
-      }
-      .footer-left, .footer-right {
-        text-align: center;
-      }
+      .enquiry .text-col { text-align: center; }
     }
     @media (max-width: 480px) {
-      .testimonial {
-        width: 100%;
-      }
-      .brand-section h1 {
-        font-size: 3rem;
-      }
-      .footer-left,
-      .footer-right {
-        text-align: center;
-      }
+      .testimonial { width: 100%; }
     }
   </style>
 </head>
@@ -498,14 +464,12 @@
         }
       });
     });
-    document.querySelectorAll(".animate-on-scroll").forEach((el) => {
-      observer.observe(el);
-    });
+    document.querySelectorAll(".animate-on-scroll").forEach(el => observer.observe(el));
     
     // Enquiry Form Submission
     document.getElementById("enquiryForm").addEventListener("submit", function(event) {
       event.preventDefault();
-      let name = document.getElementById("name").value;
+      const name = document.getElementById("name").value;
       alert("Thank you, " + name + "! We will get back to you soon.");
     });
   </script>
